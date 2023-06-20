@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/681859-samrad20-funny-pig-hurt_JBLva8eN.wav-22681cf4191c6ed5bc59f16d4a674102.sample"
+
+[deps]
+
+source_file="res://World/681859-samrad20-funny-pig-hurt_JBLva8eN.wav"
+dest_files=[ "res://.import/681859-samrad20-funny-pig-hurt_JBLva8eN.wav-22681cf4191c6ed5bc59f16d4a674102.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
