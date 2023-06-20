@@ -8,17 +8,21 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "VBoxContainer",
+"class": "audio_slider",
+"language": "GDScript",
+"path": "res://UI/Settings/audio_slider.gd"
+} ]
 _global_script_class_icons={
+"audio_slider": ""
 }
 
 [application]
 
-
 config/name="FiresOfFreedom"
 run/main_scene="res://boot.tscn"
 boot_splash/image="res://boot.png"
-
 config/icon="res://icon.png"
 
 [autoload]

@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/Settings/VolumeSlider.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/Settings/audio_slider.gd" type="Script" id=2]
+
+[node name="AudioSetting" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -104.5
+margin_top = -37.0
+margin_right = 104.5
+margin_bottom = 37.0
+
+[node name="LabelContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 61.0
+margin_bottom = 74.0
+
+[node name="MusicLabel" type="Label" parent="HBoxContainer/LabelContainer"]
+margin_top = 10.0
+margin_right = 61.0
+margin_bottom = 24.0
+size_flags_vertical = 6
+text = "Music:"
+valign = 1
+
+[node name="SoundEffect" type="Label" parent="HBoxContainer/LabelContainer"]
+margin_top = 49.0
+margin_right = 61.0
+margin_bottom = 63.0
+size_flags_vertical = 6
+text = "Sound Fx:"
+valign = 1
+
+[node name="SliderContainer" type="VBoxContainer" parent="HBoxContainer"]
+anchor_top = 0.111
+anchor_bottom = 0.111
+margin_left = 65.0
+margin_right = 209.0
+margin_bottom = 74.0
+size_flags_horizontal = 3
+script = ExtResource( 2 )
+
+[node name="MusicSlider" parent="HBoxContainer/SliderContainer" instance=ExtResource( 1 )]
+margin_right = 144.0
+size_flags_vertical = 2
+
+[node name="SoundFxSlider" parent="HBoxContainer/SliderContainer" instance=ExtResource( 1 )]
+margin_top = 39.0
+margin_right = 144.0
+margin_bottom = 55.0
+size_flags_vertical = 2
+
+[node name="MusicAudio" type="AudioStreamPlayer" parent="."]
+autoplay = true
+bus = "Music"
+
+[node name="SoundFxAudio" type="AudioStreamPlayer" parent="."]
+autoplay = true
+bus = "SoundFx"
+
+[connection signal="value_changed" from="HBoxContainer/SliderContainer/MusicSlider" to="HBoxContainer/SliderContainer" method="_on_MusicSlider_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/SliderContainer/SoundFxSlider" to="HBoxContainer/SliderContainer" method="_on_SoundFxSlider_value_changed"]
