@@ -1,5 +1,6 @@
 extends Control
 
+export(String, FILE) var main_menu_path
 var is_paused = false
 
 func _input(event):
@@ -20,4 +21,7 @@ func _on_Resume_pressed():
 
 
 func _on_Back_pressed(): #Change scene to main menu
-	get_tree().quit()
+	var tree = get_tree()
+	
+	tree.paused = false
+	tree.change_scene(main_menu_path)
