@@ -1,5 +1,6 @@
 [gd_scene load_steps=15 format=2]
 
+
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/GrassBackground.png" type="Texture" id=3]
@@ -10,7 +11,12 @@
 [ext_resource path="res://UI/HealthUI.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/Tree.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Camera2D.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Allies/ICE/Ice.tscn" type="PackedScene" id=11]
 [ext_resource path="res://UI/pause/pause.tscn" type="PackedScene" id=12]
+[ext_resource path="res://dialogue/dialoguearea.tscn" type="PackedScene" id=13]
+[ext_resource path="res://dialogue/dialoguebox.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Enemies/Earth/earth.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Allies/Air/Air.tscn" type="PackedScene" id=16]
 
 [sub_resource type="TileSet" id=1]
 0/name = "DirtTileset.png 0"
@@ -348,6 +354,9 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 } ]
 0/z_index = 0
 
+[sub_resource type="RectangleShape2D" id=50]
+extents = Vector2( 29.5, 29.5 )
+
 [node name="World" type="Node2D"]
 
 [node name="Background" type="Sprite" parent="."]
@@ -470,4 +479,25 @@ margin_bottom = 14.0
 [node name="PauseUI" parent="CanvasLayer" instance=ExtResource( 12 )]
 visible = false
 
+[node name="DialogueBoxUI" parent="CanvasLayer" instance=ExtResource( 14 )]
+scene_text_file = "res://dialogue/dialogue.json"
+
+[node name="Ice" parent="." groups=["ice"] instance=ExtResource( 11 )]
+position = Vector2( 136, -101 )
+
+[node name="dialoguearea" parent="Ice" instance=ExtResource( 13 )]
+position = Vector2( 1, -2 )
+text_key = "ice1"
+
+[node name="CollisionShape2D" parent="Ice/dialoguearea" index="0"]
+position = Vector2( -1.5, 2.5 )
+shape = SubResource( 50 )
+
+[node name="Air" parent="." instance=ExtResource( 16 )]
+position = Vector2( 755, 509 )
+
+[node name="Earth" parent="." instance=ExtResource( 15 )]
+position = Vector2( 242, 426 )
+
 [editable path="Camera2D"]
+[editable path="Ice/dialoguearea"]
