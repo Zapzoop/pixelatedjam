@@ -38,8 +38,6 @@ text = "Sound Fx:"
 valign = 1
 
 [node name="SliderContainer" type="VBoxContainer" parent="HBoxContainer"]
-anchor_top = 0.111
-anchor_bottom = 0.111
 margin_left = 65.0
 margin_right = 209.0
 margin_bottom = 74.0

@@ -5,8 +5,9 @@
 [node name="VolumeSlider" type="HSlider"]
 margin_right = 180.0
 margin_bottom = 16.0
-min_value = -30.0
-max_value = 0.0
+min_value = -5.0
+max_value = 6.0
+value = 6.0
 rounded = true
 scrollable = false
 script = ExtResource( 1 )
