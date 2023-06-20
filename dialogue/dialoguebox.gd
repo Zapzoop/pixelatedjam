@@ -2,12 +2,15 @@ extends Control
 
 export (String, FILE, "*json") var scene_text_file
 
+const CHAR_READ_RATE = 0.05
+
 var scene_text = {}
 var selected_text = []
 var in_progress = false
 
-onready var background = $TextureRect
-onready var text_label = $Label
+
+onready var background = $MarginContainer
+onready var text_label = $MarginContainer/Panel/MarginContainer/HBoxContainer/main
 
 func _ready(): #Making the dialogue system invisible at first
 	background.visible = false
@@ -22,7 +25,11 @@ func load_scene_text():#parsing through json file
 		return parse_json(file.get_as_text())
 
 func show_text(): #Show text according to character
-	text_label.text = selected_text.pop_front()
+	var next_text = selected_text.pop_front()
+	text_label.text = next_text
+	text_label.percent_visible = 0.0
+	$Tween.interpolate_property(text_label, "percent_visible", 0.0, 1.0, len(next_text) * CHAR_READ_RATE, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.start()
 
 func next_line():  #Get next line in json upon ui_accept
 	if selected_text.size() > 0:

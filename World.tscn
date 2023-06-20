@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://UI/pause/pause.tscn" type="PackedScene" id=12]
 [ext_resource path="res://dialogue/dialoguearea.tscn" type="PackedScene" id=13]
 [ext_resource path="res://dialogue/dialoguebox.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Enemies/Earth/earth.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Allies/Air/Air.tscn" type="PackedScene" id=16]
 
 [sub_resource type="TileSet" id=1]
 0/name = "DirtTileset.png 0"
@@ -628,17 +630,11 @@ text_key = "ice1"
 position = Vector2( -1.5, 2.5 )
 shape = SubResource( 50 )
 
-[node name="Ice2" parent="." groups=["ice"] instance=ExtResource( 11 )]
-position = Vector2( 637, -165 )
+[node name="Air" parent="." instance=ExtResource( 16 )]
+position = Vector2( 755, 509 )
 
-[node name="dialoguearea" parent="Ice2" instance=ExtResource( 13 )]
-position = Vector2( 1, -2 )
-text_key = "ice2"
-
-[node name="CollisionShape2D" parent="Ice2/dialoguearea" index="0"]
-position = Vector2( -1.5, 2.5 )
-shape = SubResource( 50 )
+[node name="Earth" parent="." instance=ExtResource( 15 )]
+position = Vector2( 242, 426 )
 
 [editable path="Camera2D"]
 [editable path="Ice/dialoguearea"]
-[editable path="Ice2/dialoguearea"]
