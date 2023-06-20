@@ -1,10 +1,32 @@
 {
-    "ice1":[
-        "Hello I am fire",
-        "I am in search of Air queen"
+    "ice":[
+        "Uh, what do you need? Why have you come here?",
+        "I need your help. I need to go to the Earth Kingdom.",
+        "Why I should tell you about it?",
+        "You have to you have no other choice",
+        "I see, ok then, my lord.",
+        "Tell me",
+        "Go down South you will see his kingdom"
     ],
-    "ice2":[
-        "Did you know anything?",
-        "Please help me in finding"
+    "queen":[
+        "Thank you,I have never expected this from you! ",
+        "....Why?",
+        "I never considered you that strong",
+        "Ah.... Let's go"
+    ],
+    "king":[
+        "You are a fool to think you can destroy me",
+        "We will see that"
+    ],
+    "kingwin": [
+        "HAHA, told you now die"
+    ],
+    "kinglose": [
+        "I don't understand why you did this",
+        "Because you killed my trees and small plants....",
+        "when",
+        "during your very so-called “Intense Training”",
+        "There were other ways by which you can handle this"
+
     ]
 }
