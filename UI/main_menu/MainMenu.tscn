@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://World/GrassBackground.png" type="Texture" id=1]
 [ext_resource path="res://UI/main_menu/pixel_game_hero_idle.png" type="Texture" id=2]
@@ -573,17 +573,9 @@ region = Rect2( 16, 0, 16, 24 )
 atlas = ExtResource( 12 )
 region = Rect2( 32, 0, 16, 24 )
 
-[sub_resource type="AtlasTexture" id=62]
-atlas = ExtResource( 12 )
-region = Rect2( 48, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=63]
-atlas = ExtResource( 12 )
-region = Rect2( 64, 0, 16, 24 )
-
 [sub_resource type="SpriteFrames" id=64]
 animations = [ {
-"frames": [ SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
+"frames": [ SubResource( 59 ), SubResource( 60 ), SubResource( 61 ) ],
 "loop": true,
 "name": "default",
 "speed": 10.0
@@ -650,10 +642,25 @@ animation = "idle"
 playing = true
 
 [node name="Bat" type="AnimatedSprite" parent="."]
-position = Vector2( -46, 43 )
+position = Vector2( -10, 110 )
 scale = Vector2( 1.45, 1.4 )
 frames = SubResource( 64 )
-frame = 4
+frame = 2
+playing = true
+
+[node name="Bat2" type="AnimatedSprite" parent="."]
+position = Vector2( -97, -33 )
+scale = Vector2( 1.45, 1.4 )
+frames = SubResource( 64 )
+speed_scale = 1.1
+playing = true
+
+[node name="Bat3" type="AnimatedSprite" parent="."]
+position = Vector2( 114, -112 )
+scale = Vector2( 1.45, 1.4 )
+frames = SubResource( 64 )
+frame = 1
+speed_scale = 0.9
 playing = true
 
 [node name="MainMenuUI" type="CanvasLayer" parent="."]
