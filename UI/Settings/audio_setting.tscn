@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/Settings/VolumeSlider.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/Settings/audio_slider.gd" type="Script" id=3]
+
+[node name="AudioSetting" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -107.0
+margin_bottom = -107.0
+
+[node name="LabelContainer" type="VBoxContainer" parent="."]
+margin_right = 61.0
+margin_bottom = 73.0
+
+[node name="MusicLabel" type="Label" parent="LabelContainer"]
+margin_right = 61.0
+margin_bottom = 14.0
+text = "Music:"
+
+[node name="SoundEffect" type="Label" parent="LabelContainer"]
+margin_top = 38.0
+margin_right = 61.0
+margin_bottom = 52.0
+size_flags_vertical = 6
+text = "Sound Fx:"
+
+[node name="SliderContainer" type="VBoxContainer" parent="."]
+margin_left = 65.0
+margin_right = 213.0
+margin_bottom = 73.0
+size_flags_horizontal = 3
+script = ExtResource( 3 )
+
+[node name="MusicSlider" parent="SliderContainer" instance=ExtResource( 2 )]
+margin_right = 148.0
+size_flags_vertical = 2
+
+[node name="SoundFxSlider" parent="SliderContainer" instance=ExtResource( 2 )]
+margin_top = 38.0
+margin_right = 148.0
+margin_bottom = 54.0
+size_flags_vertical = 2
+
+[connection signal="value_changed" from="SliderContainer/MusicSlider" to="SliderContainer" method="_on_MusicSlider_value_changed"]
+[connection signal="value_changed" from="SliderContainer/SoundFxSlider" to="SliderContainer" method="_on_SoundFxSlider_value_changed"]
