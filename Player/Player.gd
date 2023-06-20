@@ -24,6 +24,7 @@ onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitbox = $HitboxPivot/SwordHitbox
 onready var hurtbox = $Hurtbox
 onready var blinkAnimationPlayer = $BlinkAnimationPlayer
+onready var footstepEffect = $FootstepEffect
 
 func _ready():
 	randomize()
@@ -57,9 +58,11 @@ func move_state(delta):
 		animationTree.set("parameters/Roll/blend_position", input_vector)
 		animationState.travel("Run")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
+		footstepEffect.is_active = true
 	else:
 		animationState.travel("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+		footstepEffect.is_active = false		
 	
 	move()
 	
