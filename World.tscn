@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -351,6 +351,11 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
+
+[sub_resource type="CircleShape2D" id=51]
+radius = 24.0
+
+[sub_resource type="CircleShape2D" id=52]
 
 [node name="World" type="Node2D"]
 
@@ -4199,21 +4204,36 @@ margin_bottom = 14.0
 scene_text_file = "res://dialogue/dialogue.json"
 
 [node name="Ice" parent="." groups=["ice"] instance=ExtResource( 11 )]
-position = Vector2( 136, -101 )
+position = Vector2( 64, 24 )
 
 [node name="dialoguearea" parent="Ice" instance=ExtResource( 13 )]
 position = Vector2( 1, -2 )
-text_key = "ice1"
+text_key = "ice"
 
 [node name="CollisionShape2D" parent="Ice/dialoguearea" index="0"]
 position = Vector2( -1.5, 2.5 )
 shape = SubResource( 50 )
 
 [node name="Air" parent="." instance=ExtResource( 16 )]
-position = Vector2( 755, 509 )
+position = Vector2( 120, 24 )
+
+[node name="dialoguearea" parent="Air" instance=ExtResource( 13 )]
+text_key = "queen"
+
+[node name="CollisionShape2D" parent="Air/dialoguearea" index="0"]
+position = Vector2( 16, 16 )
+shape = SubResource( 51 )
 
 [node name="Earth" parent="." instance=ExtResource( 15 )]
-position = Vector2( 242, 426 )
+position = Vector2( 216, 32 )
+
+[node name="dialoguearea" parent="Earth" instance=ExtResource( 13 )]
+text_key = "king"
+
+[node name="CollisionShape2D" parent="Earth/dialoguearea" index="0"]
+shape = SubResource( 52 )
 
 [editable path="Camera2D"]
 [editable path="Ice/dialoguearea"]
+[editable path="Air/dialoguearea"]
+[editable path="Earth/dialoguearea"]
