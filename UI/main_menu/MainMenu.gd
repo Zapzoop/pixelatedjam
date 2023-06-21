@@ -57,3 +57,8 @@ func _go_to_load_scene():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	fader.fade_screen(true, "_go_to_main_scene", self)
+
+
+func _on_Audio2_pressed():
+	$"/root/SaveSystem".load_file()
+	fader.fade_screen(true, "_go_to_load_scene", self)

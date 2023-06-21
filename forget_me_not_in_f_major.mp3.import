@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/forget_me_not_in_f_major.mp3-80cf6f8f60e103ea5a16a1fbc43d2bda.mp3str"
+
+[deps]
+
+source_file="res://forget_me_not_in_f_major.mp3"
+dest_files=[ "res://.import/forget_me_not_in_f_major.mp3-80cf6f8f60e103ea5a16a1fbc43d2bda.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
