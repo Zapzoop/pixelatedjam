@@ -26,7 +26,8 @@ func _ready():
 func on_free():#Freeing Boss and Player here for dialogue system
 	if body != null:
 		if body.get_ref():
-				body.queue_free()
+				get_tree().change_scene("res://Dead.tscn")
+				#body.queue_free()
 
 func loadit():
 	yield(get_tree().create_timer(.1), "timeout")

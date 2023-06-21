@@ -102,7 +102,8 @@ func death_handler():
 		$"/root/Signalbus".body = self
 		$"/root/Signalbus".is_end_bad = true
 		Signalbus.emit_signal("display_dialog", "KingWin")
-	queue_free()#change scene here
+	#queue_free()#change scene here
+	get_tree().change_scene("res://Dead.tscn")
 	#Body is queue_free in signalbus via dialogue when died by boss
 
 func _on_Hurtbox_area_entered(area):

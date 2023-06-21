@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/666737__chris5s__blustery-winter-evening.mp3-79b66922e7df8dd4a22bf688f6765e01.mp3str"
+
+[deps]
+
+source_file="res://World/666737__chris5s__blustery-winter-evening.mp3"
+dest_files=[ "res://.import/666737__chris5s__blustery-winter-evening.mp3-79b66922e7df8dd4a22bf688f6765e01.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
