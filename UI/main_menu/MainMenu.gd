@@ -13,7 +13,7 @@ func _ready() -> void:
 	fader.fade_screen(false)
 
 func _on_play() -> void:
-	fader.fade_screen(true, "_go_to_main_scene", self)
+	$AnimationPlayer.play("1")
 
 func _on_quit() -> void:
 	fader.fade_screen(true, "quit", get_tree())
@@ -53,3 +53,7 @@ func _go_to_load_scene():
 	get_tree().change_scene(main_scene_path)
 	Signalbus.emit_signal("load_scene")
 
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	fader.fade_screen(true, "_go_to_main_scene", self)

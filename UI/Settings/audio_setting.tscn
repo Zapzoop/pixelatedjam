@@ -1,7 +1,41 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=2]
 
+[ext_resource path="res://Tick.png" type="Texture" id=1]
 [ext_resource path="res://UI/Settings/VolumeSlider.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/Settings/audio_slider.gd" type="Script" id=3]
+[ext_resource path="res://Tick2.png" type="Texture" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 0.8, 0.8, 1 )
+corner_radius_top_left = 1024
+corner_radius_top_right = 1024
+corner_radius_bottom_right = 1024
+corner_radius_bottom_left = 1024
+corner_detail = 2
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.85098, 0.85098, 0.85098, 1 )
+corner_radius_top_left = 1024
+corner_radius_top_right = 1024
+corner_radius_bottom_right = 1024
+corner_radius_bottom_left = 1024
+corner_detail = 2
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 0.8, 0.8, 1 )
+corner_radius_top_left = 1024
+corner_radius_top_right = 1024
+corner_radius_bottom_right = 1024
+corner_radius_bottom_left = 1024
+corner_detail = 2
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.85098, 0.85098, 0.85098, 1 )
+corner_radius_top_left = 1024
+corner_radius_top_right = 1024
+corner_radius_bottom_right = 1024
+corner_radius_bottom_left = 1024
+corner_detail = 2
 
 [node name="AudioSetting" type="HBoxContainer"]
 anchor_right = 1.0
@@ -34,13 +68,23 @@ script = ExtResource( 3 )
 
 [node name="MusicSlider" parent="SliderContainer" instance=ExtResource( 2 )]
 margin_right = 148.0
+margin_bottom = 32.0
 size_flags_vertical = 2
+custom_icons/grabber_highlight = ExtResource( 4 )
+custom_icons/grabber = ExtResource( 1 )
+custom_styles/grabber_area_highlight = SubResource( 1 )
+custom_styles/grabber_area = SubResource( 2 )
 
 [node name="SoundFxSlider" parent="SliderContainer" instance=ExtResource( 2 )]
 margin_top = 38.0
 margin_right = 148.0
-margin_bottom = 54.0
+margin_bottom = 70.0
 size_flags_vertical = 2
+custom_icons/grabber_highlight = ExtResource( 4 )
+custom_icons/grabber = ExtResource( 1 )
+custom_styles/grabber_area_highlight = SubResource( 3 )
+custom_styles/grabber_area = SubResource( 4 )
+allow_lesser = true
 
 [connection signal="value_changed" from="SliderContainer/MusicSlider" to="SliderContainer" method="_on_MusicSlider_value_changed"]
 [connection signal="value_changed" from="SliderContainer/SoundFxSlider" to="SliderContainer" method="_on_SoundFxSlider_value_changed"]
