@@ -143,7 +143,6 @@ material = SubResource( 14 )
 scale = Vector2( 1.35, 1.35 )
 frames = SubResource( 15 )
 animation = "down"
-frame = 3
 playing = true
 offset = Vector2( 0, -12 )
 
@@ -159,6 +158,7 @@ shape = SubResource( 7 )
 [node name="FootstepEffect" parent="." instance=ExtResource( 11 )]
 position = Vector2( 0, -7 )
 scale = Vector2( 0.45, 0.45 )
+emit_tick_threshold = 0.215
 path_sorting_ref = NodePath("..")
 
 [node name="Hurtbox" parent="." instance=ExtResource( 3 )]

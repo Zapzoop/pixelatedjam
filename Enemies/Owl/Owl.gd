@@ -44,6 +44,7 @@ func _physics_process(delta):
 	knockback = move_and_slide(knockback + force)
 	
 	footstep_fx.is_active = state != IDLE
+	sprite.playing = state != IDLE
 	
 	match state:
 		IDLE:
@@ -78,7 +79,7 @@ func _physics_process(delta):
 				dash_cooldown = DASH_COOLDOWN
 				
 				var mine = pkg_mine.instance()
-				owner.get_parent().add_child(mine)
+				get_parent().add_child(mine)
 				
 				mine.global_position = global_position
 
@@ -99,9 +100,6 @@ func accelerate_towards_point(point, delta):
 		sprite.animation = "down"
 	else:
 		sprite.animation = "right"
-
-func move_around_point(point: Vector2, delta: float) -> void:
-	pass
 
 func seek_player():
 	if playerDetectionZone.can_see_player():
