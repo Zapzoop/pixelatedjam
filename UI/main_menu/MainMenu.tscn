@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=80 format=2]
 
 [ext_resource path="res://World/GrassBackground.png" type="Texture" id=1]
 [ext_resource path="res://UI/main_menu/pixel_game_hero_idle.png" type="Texture" id=2]
@@ -495,7 +495,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 2/texture = ExtResource( 4 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
-2/region = Rect2( 0, -1, 32, 51 )
+2/region = Rect2( 7, 0, 47, 64 )
 2/tile_mode = 0
 2/occluder_offset = Vector2( 0, 0 )
 2/navigation_offset = Vector2( 0, 0 )
@@ -511,7 +511,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 0/texture = ExtResource( 3 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( -2, -6, 36, 41 )
+0/region = Rect2( 0, 0, 32, 32 )
 0/tile_mode = 0
 0/occluder_offset = Vector2( 0, 0 )
 0/navigation_offset = Vector2( 0, 0 )
@@ -538,28 +538,44 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 0/shapes = [  ]
 0/z_index = 0
 
-[sub_resource type="AtlasTexture" id=54]
+[sub_resource type="AtlasTexture" id=65]
 atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 64, 64 )
+region = Rect2( 0, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=55]
+[sub_resource type="AtlasTexture" id=66]
 atlas = ExtResource( 2 )
-region = Rect2( 64, 0, 64, 64 )
+region = Rect2( 32, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=56]
+[sub_resource type="AtlasTexture" id=67]
 atlas = ExtResource( 2 )
-region = Rect2( 128, 0, 64, 64 )
+region = Rect2( 64, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=57]
+[sub_resource type="AtlasTexture" id=68]
 atlas = ExtResource( 2 )
-region = Rect2( 192, 0, 64, 64 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=69]
+atlas = ExtResource( 2 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=70]
+atlas = ExtResource( 2 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=71]
+atlas = ExtResource( 2 )
+region = Rect2( 192, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=72]
+atlas = ExtResource( 2 )
+region = Rect2( 224, 0, 32, 32 )
 
 [sub_resource type="SpriteFrames" id=53]
 animations = [ {
-"frames": [ SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ) ],
+"frames": [ SubResource( 65 ), SubResource( 66 ), SubResource( 67 ), SubResource( 68 ), SubResource( 69 ), SubResource( 70 ), SubResource( 71 ), SubResource( 72 ) ],
 "loop": true,
 "name": "idle",
-"speed": 4.0
+"speed": 7.0
 } ]
 
 [sub_resource type="AtlasTexture" id=59]
@@ -610,22 +626,22 @@ tile_set = SubResource( 50 )
 cell_size = Vector2( 32, 32 )
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( -458757, 0, 0, -458756, 0, 2, -393222, 0, 0, -393221, 0, 131078, -393220, 0, 131077, -393219, 0, 2, -327686, 0, 65536, -327685, 0, 65537, -327684, 0, 65537, -327683, 0, 65538, -393215, 0, 0, -393214, 0, 1, -393213, 0, 2, -262150, 0, 131072, -262149, 0, 131073, -262148, 0, 131073, -262147, 0, 131074, -327679, 0, 65536, -327678, 0, 65537, -327677, 0, 65538, -262143, 0, 65536, -262142, 0, 65537, -262141, 0, 131077, -262140, 0, 1, -262139, 0, 1, -262138, 0, 1, -262137, 0, 2, -196607, 0, 131072, -196606, 0, 131073, -196605, 0, 131073, -196604, 0, 131073, -196603, 0, 131073, -196602, 0, 131073, -196601, 0, 131074, 65541, 0, 0, 65542, 0, 2, 196601, 0, 196608, 196602, 0, 196609, 196603, 0, 7, 131077, 0, 131072, 131078, 0, 131074, 262139, 0, 131075 )
+tile_data = PoolIntArray( -589823, 0, 0, -589822, 0, 1, -589821, 0, 2, -458757, 0, 0, -458756, 0, 2, -524287, 0, 65536, -524286, 0, 65537, -524285, 0, 65538, -393222, 0, 0, -393221, 0, 131078, -393220, 0, 131077, -393219, 0, 2, -458751, 0, 65536, -458750, 0, 65537, -458749, 0, 131077, -458748, 0, 1, -458747, 0, 1, -458746, 0, 1, -458745, 0, 2, -327686, 0, 65536, -327685, 0, 65537, -327684, 0, 65537, -327683, 0, 65538, -393215, 0, 65536, -393214, 0, 65537, -393213, 0, 65537, -393212, 0, 65537, -393211, 0, 65537, -393210, 0, 65537, -393209, 0, 65538, -262150, 0, 131072, -262149, 0, 131073, -262148, 0, 131073, -262147, 0, 131074, -327679, 0, 65536, -327678, 0, 65537, -327677, 0, 65537, -327676, 0, 65537, -327675, 0, 65537, -327674, 0, 65537, -327673, 0, 65538, -262143, 0, 65536, -262142, 0, 65537, -262141, 0, 65537, -262140, 0, 65537, -262139, 0, 65537, -262138, 0, 65537, -262137, 0, 65538, -196607, 0, 131072, -196606, 0, 131073, -196605, 0, 131073, -196604, 0, 131073, -196603, 0, 131073, -196602, 0, 131073, -196601, 0, 131074, 65541, 0, 0, 65542, 0, 2, 196601, 0, 196608, 196602, 0, 196609, 196603, 0, 7, 131077, 0, 131072, 131078, 0, 131074, 262139, 0, 131075 )
 
 [node name="Trees" type="TileMap" parent="."]
 scale = Vector2( 1.25, 1.25 )
 tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
+cell_size = Vector2( 40, 40 )
 format = 1
-tile_data = PoolIntArray( -524295, 2, 0, -524294, 2, 0, -524293, 2, 0, -589818, 2, 0, -589817, 2, 0, -589816, 2, 0, -524282, 2, 0, -524281, 2, 0, -524280, 2, 0, -458744, 2, 0, -327690, 2, 0, -262151, 2, 0, -262150, 2, 0, -327679, 2, 0, -327678, 2, 0, -196616, 2, 0, -196615, 2, 0, -262140, 2, 0, -262139, 2, 0, -131084, 2, 0, -131083, 2, 0, -131080, 2, 0, -131077, 2, 0, -131076, 2, 0, -65548, 2, 0, -65547, 2, 0, -65542, 2, 0, -65541, 2, 0, -65540, 2, 0, -65539, 2, 0, -131062, 2, 0, -12, 2, 0, -11, 2, 0, -5, 2, 0, -4, 2, 0, -65527, 2, 0, -65526, 2, 0, 6, 2, 0, 9, 2, 0, 131064, 2, 0, 131073, 2, 0, 131074, 2, 0, 131075, 2, 0, 262138, 2, 0, 262139, 2, 0, 262140, 2, 0, 196609, 2, 0, 196610, 2, 0, 196611, 2, 0, 327674, 2, 0, 327675, 2, 0, 327676, 2, 0, 393221, 2, 0, 458756, 2, 0, 524290, 2, 0, 524291, 2, 0, 524294, 2, 0, 720892, 2, 0, 720893, 2, 0 )
+tile_data = PoolIntArray( -524295, 2, 0, -524294, 2, 0, -524293, 2, 0, -589818, 2, 0, -589817, 2, 0, -589816, 2, 0, -524282, 2, 0, -524281, 2, 0, -524280, 2, 0, -458748, 2, 0, -458744, 2, 0, -327690, 2, 0, -262151, 2, 0, -262150, 2, 0, -327677, 2, 0, -196616, 2, 0, -196615, 2, 0, -262143, 2, 0, -262140, 2, 0, -131084, 2, 0, -131083, 2, 0, -131080, 2, 0, -131077, 2, 0, -131076, 2, 0, -131075, 2, 0, -65548, 2, 0, -65547, 2, 0, -65541, 2, 0, -131062, 2, 0, -12, 2, 0, -11, 2, 0, -5, 2, 0, -3, 2, 0, -65527, 2, 0, -65526, 2, 0, 6, 2, 0, 9, 2, 0, 131064, 2, 0, 131073, 2, 0, 131074, 2, 0, 131075, 2, 0, 262138, 2, 0, 262139, 2, 0, 262140, 2, 0, 196609, 2, 0, 196610, 2, 0, 196611, 2, 0, 327674, 2, 0, 327675, 2, 0, 327676, 2, 0, 393221, 2, 0, 458756, 2, 0, 524290, 2, 0, 524291, 2, 0, 524294, 2, 0, 720892, 2, 0, 720893, 2, 0 )
 
 [node name="Bushes" type="TileMap" parent="."]
 scale = Vector2( 1.5, 1.5 )
 tile_set = SubResource( 51 )
-cell_size = Vector2( 24, 24 )
+cell_size = Vector2( 32, 32 )
 centered_textures = true
 format = 1
-tile_data = PoolIntArray( -196610, 0, 0, -196609, 0, 0, -262137, 0, 0, -196601, 0, 0, 458750, 0, 0, 458751, 0, 0 )
+tile_data = PoolIntArray( -196609, 0, 0, -262136, 0, 0, -196600, 0, 0, 458750, 0, 0, 458751, 0, 0 )
 
 [node name="Grass" type="TileMap" parent="."]
 scale = Vector2( 1.5, 1.5 )
@@ -633,21 +649,21 @@ tile_set = SubResource( 52 )
 cell_size = Vector2( 16, 16 )
 centered_textures = true
 format = 1
-tile_data = PoolIntArray( -655361, 0, 0, -720896, 0, 0, -589836, 0, 0, -65551, 0, 0, -65538, 0, 0, -65537, 0, 0, -65529, 0, 0, -65528, 0, 0, 65524, 0, 0, 3, 0, 0, 4, 0, 0, 65540, 0, 0, 262128, 0, 0, 327663, 0, 0, 327664, 0, 0, 327675, 0, 0, 327676, 0, 0, 262144, 0, 0, 262152, 0, 0, 327680, 0, 0, 524274, 0, 0, 589810, 0, 0, 786425, 0, 0, 786426, 0, 0 )
+tile_data = PoolIntArray( -786434, 0, 0, -720899, 0, 0, -720897, 0, 0, -655361, 0, 0, -458741, 0, 0, -393205, 0, 0, -327669, 0, 0, -262133, 0, 0, -196593, 0, 0, -65551, 0, 0, -65538, 0, 0, -65537, 0, 0, -131057, 0, 0, -65529, 0, 0, -65528, 0, 0, 65524, 0, 0, 3, 0, 0, 4, 0, 0, 65540, 0, 0, 196619, 0, 0, 327675, 0, 0, 327676, 0, 0, 262144, 0, 0, 262157, 0, 0, 262159, 0, 0, 393198, 0, 0, 327680, 0, 0, 327694, 0, 0, 393225, 0, 0, 524271, 0, 0, 524274, 0, 0, 458762, 0, 0, 589808, 0, 0, 589810, 0, 0, 524297, 0, 0, 655364, 0, 0, 655366, 0, 0, 786426, 0, 0, 720901, 0, 0, 851962, 0, 0, 917496, 0, 0 )
 
 [node name="Player" type="AnimatedSprite" parent="."]
 position = Vector2( 146, -40 )
 scale = Vector2( 1.25, 1.25 )
 frames = SubResource( 53 )
 animation = "idle"
-frame = 3
+frame = 2
 playing = true
 
 [node name="Bat" type="AnimatedSprite" parent="."]
 position = Vector2( -10, 110 )
 scale = Vector2( 1.45, 1.4 )
 frames = SubResource( 64 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="Bat2" type="AnimatedSprite" parent="."]
@@ -662,7 +678,7 @@ playing = true
 position = Vector2( 114, -112 )
 scale = Vector2( 1.45, 1.4 )
 frames = SubResource( 64 )
-frame = 1
+frame = 2
 speed_scale = 0.9
 playing = true
 
