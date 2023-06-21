@@ -23,6 +23,18 @@ func _on_back_button_pressed():
 
 func _go_to_main_scene():
 	get_tree().change_scene(main_scene_path)
+	var newplayer = {
+	"health": 4,
+	"position": {
+		"x": 168,
+		"y": 80
+	},
+	"interacted": [
+		
+	]
+}
+	SaveSystem.player = newplayer
+	SaveSystem.save_file()
 	$"/root/Signalbus".emit_signal("loading_world")
 	
 func toggle_audio_option(value: bool) -> void:
