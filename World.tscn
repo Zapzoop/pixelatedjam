@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://dialogue/dialoguebox.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Enemies/Earth/earth.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Allies/Air/Air.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Enemies/Boss/Boss.tscn" type="PackedScene" id=17]
 
 [sub_resource type="TileSet" id=1]
 0/name = "DirtTileset.png 0"
@@ -353,11 +354,12 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 } ]
 0/z_index = 0
 
-[sub_resource type="CircleShape2D" id=51]
-radius = 24.0
+[sub_resource type="RectangleShape2D" id=51]
 
-[sub_resource type="CircleShape2D" id=52]
-radius = 24.0
+[sub_resource type="RectangleShape2D" id=52]
+
+[sub_resource type="RectangleShape2D" id=53]
+extents = Vector2( 17, 9 )
 
 [node name="World" type="Node2D"]
 
@@ -13639,8 +13641,8 @@ position = Vector2( 1, -2 )
 text_key = "ice"
 
 [node name="CollisionShape2D" parent="Ice/dialoguearea" index="0"]
-position = Vector2( -1.5, 2.5 )
-shape = SubResource( 50 )
+position = Vector2( 7, 10 )
+shape = SubResource( 51 )
 
 [node name="Air" parent="." groups=["air"] instance=ExtResource( 16 )]
 position = Vector2( 144, 24 )
@@ -13649,7 +13651,8 @@ position = Vector2( 144, 24 )
 text_key = "queen"
 
 [node name="CollisionShape2D" parent="Air/dialoguearea" index="0"]
-shape = SubResource( 51 )
+position = Vector2( 8, 8 )
+shape = SubResource( 52 )
 
 [node name="Earth" parent="." groups=["earth"] instance=ExtResource( 15 )]
 position = Vector2( 208, 56 )
@@ -13658,8 +13661,10 @@ position = Vector2( 208, 56 )
 text_key = "king"
 
 [node name="CollisionShape2D" parent="Earth/dialoguearea" index="0"]
-position = Vector2( 16, 0 )
-shape = SubResource( 52 )
+position = Vector2( 15, 7 )
+shape = SubResource( 53 )
+
+[node name="Boss" parent="." instance=ExtResource( 17 )]
 
 [editable path="Camera2D"]
 [editable path="Ice/dialoguearea"]

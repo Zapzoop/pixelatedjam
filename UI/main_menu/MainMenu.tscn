@@ -656,21 +656,19 @@ position = Vector2( 146, -40 )
 scale = Vector2( 1.25, 1.25 )
 frames = SubResource( 53 )
 animation = "idle"
-frame = 7
+frame = 5
 playing = true
 
 [node name="Bat" type="AnimatedSprite" parent="."]
 position = Vector2( -10, 110 )
 scale = Vector2( 1.45, 1.4 )
 frames = SubResource( 64 )
-frame = 1
 playing = true
 
 [node name="Bat2" type="AnimatedSprite" parent="."]
 position = Vector2( -97, -33 )
 scale = Vector2( 1.45, 1.4 )
 frames = SubResource( 64 )
-frame = 1
 speed_scale = 1.1
 playing = true
 
@@ -678,7 +676,6 @@ playing = true
 position = Vector2( 114, -112 )
 scale = Vector2( 1.45, 1.4 )
 frames = SubResource( 64 )
-frame = 1
 speed_scale = 0.9
 playing = true
 

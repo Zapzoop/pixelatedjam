@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://sprites/characters/player.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Music and Sounds/Evade.wav" type="AudioStream" id=8]
 [ext_resource path="res://WhiteColor.shader" type="Shader" id=9]
 [ext_resource path="res://Effects/FootstepEffect/FootstepEffect.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Fonts/PublicPixel-z84yD.ttf" type="DynamicFontData" id=11]
 
 [sub_resource type="ShaderMaterial" id=50]
 shader = ExtResource( 9 )
@@ -811,6 +812,10 @@ tracks/0/keys = {
 [sub_resource type="CircleShape2D" id=51]
 radius = 17.8885
 
+[sub_resource type="DynamicFont" id=56]
+size = 8
+font_data = ExtResource( 11 )
+
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
 script = ExtResource( 2 )
@@ -895,6 +900,7 @@ anims/Start = SubResource( 48 )
 anims/Stop = SubResource( 49 )
 
 [node name="FootstepEffect" parent="." instance=ExtResource( 10 )]
+position = Vector2( 0, -8 )
 path_sorting_ref = NodePath("..")
 
 [node name="Interaction" type="Area2D" parent="."]
@@ -903,6 +909,20 @@ collision_mask = 512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction"]
 shape = SubResource( 51 )
+
+[node name="Label" type="Label" parent="Interaction"]
+visible = false
+margin_left = -19.0
+margin_top = -46.0
+margin_right = 21.0
+margin_bottom = -32.0
+custom_fonts/font = SubResource( 56 )
+text = "E"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_ended"]
