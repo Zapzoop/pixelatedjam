@@ -719,6 +719,7 @@ playing = true
 position = Vector2( -10, 110 )
 scale = Vector2( 1.45, 1.4 )
 frames = SubResource( 64 )
+frame = 2
 playing = true
 
 [node name="Bat2" type="AnimatedSprite" parent="."]

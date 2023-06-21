@@ -5,6 +5,9 @@ onready var fader = get_node("%Fader")
 onready var menu_box = get_node("MainMenuUI/RootUI/Panel/MenuBoxContainer")
 onready var audio_box = get_node("MainMenuUI/RootUI/Panel/AudioBoxContainer")
 
+
+
+
 func _ready() -> void:
 	toggle_audio_option(false)
 	fader.fade_screen(false)

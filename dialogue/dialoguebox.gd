@@ -94,6 +94,7 @@ func finish():#finishes the dialogue scene
 	get_tree().paused = false
 	current_dialogue_character = null
 	$"/root/Signalbus".emit_signal("free")
+	Signalbus.emit_signal("finished")
 	
 	
 func on_display_dialog(text_key):  #When in display pause other things
