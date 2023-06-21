@@ -1,8 +1,22 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://aa.png" type="Texture" id=1]
+[ext_resource path="res://Shadows/MediumShadow.png" type="Texture" id=2]
 
 [node name="Ice" type="KinematicBody2D"]
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 14.0
 text = "Ice"
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 1, 5 )
+scale = Vector2( 1.1875, 0.7 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 2, -6 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 1 )

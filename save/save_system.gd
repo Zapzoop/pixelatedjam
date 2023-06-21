@@ -17,7 +17,6 @@ func _ready():
 	Signalbus.connect("loading_world",self,"on_loading")
 
 func save_file():
-	print(player)
 	var file = File.new()
 	file.open(save_file, File.WRITE)
 	file.store_string(to_json(player))

@@ -1,5 +1,42 @@
 extends Control
 
+const file1 = "user://dialogues.json"
+var dialogues = {
+	"Ice":[
+		"Uh, what do you need? Why have you come here?",
+		"I need your help. I need to go to the Earth Kingdom.",
+		"Why I should tell you about it?",
+		"You have to you have no other choice",
+		"I see, ok then, my lord.",
+		"Help me",
+		"I will open a portal and teleport you there..."
+	],
+	"Queen":[
+		"Thank you,I have never expected this from you! ",
+		"....Why?",
+		"I never considered you that strong",
+		"Ah.... Let's go"
+	],
+	"King":[
+		"You are a fool to think you can destroy me",
+		"We will see that"
+	],
+	"KingWin": [
+		"HAHA, told you now die"
+	],
+	"KingLose": [
+		"I don't understand why you did this",
+		"Because you killed my trees and small plants....",
+		"when",
+		"during your very so-called “Intense Training”",
+		"There were other ways by which you can handle this"
+
+	],
+	"Save":[
+		"Do you want to save?\nYes         No"
+	]
+}
+
 export (String, FILE, "*json") var scene_text_file
 
 const CHAR_READ_RATE = 0.05
@@ -20,6 +57,7 @@ onready var background = $MarginContainer
 onready var text_label = $MarginContainer/Panel/MarginContainer/HBoxContainer/main
 
 func _ready(): #Making the dialogue system invisible at first
+	save_file()
 	background.visible = false
 	text_label.visible = false
 	$Boss.visible = false
@@ -30,10 +68,16 @@ func _ready(): #Making the dialogue system invisible at first
 	scene_text = load_scene_text()
 	Signalbus.connect("display_dialog", self, "on_display_dialog")
 
+func save_file():
+	var file = File.new()
+	file.open(file1, File.WRITE)
+	file.store_string(to_json(dialogues))
+	file.close()
+
 func load_scene_text():#parsing through json file
 	var file = File.new()
-	if file.file_exists(scene_text_file):
-		file.open(scene_text_file, File.READ)
+	if file.file_exists(file1):
+		file.open(file1, File.READ)
 		return parse_json(file.get_as_text())
 
 func show_text(): #Show text according to character
