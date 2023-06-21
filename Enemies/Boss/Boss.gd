@@ -22,6 +22,8 @@ export var SPAWN_COOLDOWN = 20.0
 export var SHOOT_COOLDOWN = 12.0
 export var SHOOT_CHANCE = 0.35
 
+export var SHOOTS_PROJECTILES = true
+
 export var pkg_mine: PackedScene
 export var pkg_projectile: PackedScene
 export var pkg_aoe_attack: PackedScene
@@ -89,7 +91,7 @@ func _process(delta: float) -> void:
 	spawn_cooldown = max(0.0, spawn_cooldown - delta)
 	shoot_cooldown = max(0.0, shoot_cooldown - delta)
 	
-	if shoot_cooldown < 0.1:
+	if SHOOTS_PROJECTILES && shoot_cooldown < 0.1:
 		_shoot_tracking_projectiles()
 		
 	if spawn_cooldown < 0.1:
