@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "OwlProjectile",
+"language": "GDScript",
+"path": "res://Enemies/Owl/OwlProjectile.gd"
+}, {
 "base": "VBoxContainer",
 "class": "audio_slider",
 "language": "GDScript",
 "path": "res://UI/Settings/audio_slider.gd"
 } ]
 _global_script_class_icons={
+"OwlProjectile": "",
 "audio_slider": ""
 }
 
@@ -27,8 +33,9 @@ config/icon="res://icon.png"
 
 [autoload]
 
-PlayerStats="*res://Player/PlayerStats.tscn"
 Signalbus="*res://dialogue/signalbus.gd"
+SaveSystem="*res://save/save_system.gd"
+PlayerStats="*res://Player/PlayerStats.tscn"
 
 [display]
 

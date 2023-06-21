@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://dialogue/dialoguebox.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Enemies/Earth/earth.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Allies/Air/Air.tscn" type="PackedScene" id=16]
+[ext_resource path="res://save/save.tscn" type="PackedScene" id=18]
 
 [sub_resource type="TileSet" id=1]
 0/name = "DirtTileset.png 0"
@@ -353,11 +354,12 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 } ]
 0/z_index = 0
 
-[sub_resource type="CircleShape2D" id=51]
-radius = 24.0
+[sub_resource type="RectangleShape2D" id=51]
 
-[sub_resource type="CircleShape2D" id=52]
-radius = 24.0
+[sub_resource type="RectangleShape2D" id=52]
+
+[sub_resource type="RectangleShape2D" id=53]
+extents = Vector2( 17, 9 )
 
 [node name="World" type="Node2D"]
 
@@ -1552,6 +1554,9 @@ position = Vector2( -4832, -832 )
 
 [node name="Bush381" parent="YSort/Bushes" instance=ExtResource( 1 )]
 position = Vector2( -4688, -312 )
+
+[node name="Sprite" parent="YSort/Bushes" instance=ExtResource( 18 )]
+position = Vector2( 424, -88 )
 
 [node name="Grass" type="YSort" parent="YSort"]
 
@@ -13636,30 +13641,31 @@ position = Vector2( 80, 64 )
 
 [node name="dialoguearea" parent="Ice" instance=ExtResource( 13 )]
 position = Vector2( 1, -2 )
-text_key = "ice"
+text_key = "Ice"
 
 [node name="CollisionShape2D" parent="Ice/dialoguearea" index="0"]
-position = Vector2( -1.5, 2.5 )
-shape = SubResource( 50 )
+position = Vector2( 7, 10 )
+shape = SubResource( 51 )
 
 [node name="Air" parent="." groups=["air"] instance=ExtResource( 16 )]
 position = Vector2( 144, 24 )
 
 [node name="dialoguearea" parent="Air" instance=ExtResource( 13 )]
-text_key = "queen"
+text_key = "Queen"
 
 [node name="CollisionShape2D" parent="Air/dialoguearea" index="0"]
-shape = SubResource( 51 )
+position = Vector2( 8, 8 )
+shape = SubResource( 52 )
 
 [node name="Earth" parent="." groups=["earth"] instance=ExtResource( 15 )]
 position = Vector2( 208, 56 )
 
 [node name="dialoguearea" parent="Earth" instance=ExtResource( 13 )]
-text_key = "king"
+text_key = "King"
 
 [node name="CollisionShape2D" parent="Earth/dialoguearea" index="0"]
-position = Vector2( 16, 0 )
-shape = SubResource( 52 )
+position = Vector2( 15, 7 )
+shape = SubResource( 53 )
 
 [editable path="Camera2D"]
 [editable path="Ice/dialoguearea"]

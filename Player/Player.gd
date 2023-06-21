@@ -17,6 +17,10 @@ var state = MOVE
 var velocity = Vector2.ZERO
 var roll_vector = Vector2.DOWN
 var stats = PlayerStats
+var current_attacking
+var last_attacking
+var is_end_bad :bool
+
 
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
@@ -28,7 +32,9 @@ onready var footstepEffect = $FootstepEffect
 
 func _ready():
 	randomize()
-	stats.connect("no_health", self, "queue_free")
+	stats.connect("no_health", self, "death_handler")
+	Signalbus.connect("save",self,"upload")
+	Signalbus.connect("realload",self,"set_load")
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
 
@@ -42,7 +48,7 @@ func _physics_process(delta):
 		
 		ATTACK:
 			attack_state()
-	
+
 func move_state(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -91,6 +97,14 @@ func roll_animation_finished():
 func attack_animation_finished():
 	state = MOVE
 
+func death_handler():
+	if current_attacking == "Boss" or last_attacking == "Boss":
+		$"/root/Signalbus".body = self
+		$"/root/Signalbus".is_end_bad = true
+		Signalbus.emit_signal("display_dialog", "KingWin")
+	queue_free()#change scene here
+	#Body is queue_free in signalbus via dialogue when died by boss
+
 func _on_Hurtbox_area_entered(area):
 	stats.health -= area.damage
 	hurtbox.start_invincibility(0.6)
@@ -104,5 +118,20 @@ func _on_Hurtbox_invincibility_started():
 func _on_Hurtbox_invincibility_ended():
 	blinkAnimationPlayer.play("Stop")
 
+func _on_Interaction_body_entered(body):
+	current_attacking = body.name
+	last_attacking= current_attacking
+	
+func _on_Interaction_body_exited(body):
+	current_attacking = null
+	
+func upload():
+	SaveSystem.player["health"] = stats.health
+	var pos = get_global_position()
+	SaveSystem.player["position"] = {"x":pos.x,"y":pos.y}
 
-
+func set_load():
+	stats.health = SaveSystem.player["health"]
+	var loadpos = SaveSystem.player["position"]
+	var pos = Vector2(loadpos["x"],loadpos["y"])
+	set_global_position(pos)

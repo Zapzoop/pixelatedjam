@@ -656,21 +656,20 @@ position = Vector2( 146, -40 )
 scale = Vector2( 1.25, 1.25 )
 frames = SubResource( 53 )
 animation = "idle"
-frame = 7
+frame = 1
 playing = true
 
 [node name="Bat" type="AnimatedSprite" parent="."]
 position = Vector2( -10, 110 )
 scale = Vector2( 1.45, 1.4 )
 frames = SubResource( 64 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Bat2" type="AnimatedSprite" parent="."]
 position = Vector2( -97, -33 )
 scale = Vector2( 1.45, 1.4 )
 frames = SubResource( 64 )
-frame = 1
 speed_scale = 1.1
 playing = true
 
@@ -723,11 +722,11 @@ margin_right = 129.0
 margin_bottom = 74.0
 custom_constants/separation = 4
 
-[node name="Start" type="Button" parent="MainMenuUI/RootUI/Panel/MenuBoxContainer/VBoxContainer/Buttons"]
+[node name="New Game" type="Button" parent="MainMenuUI/RootUI/Panel/MenuBoxContainer/VBoxContainer/Buttons"]
 margin_right = 129.0
 margin_bottom = 13.0
 rect_min_size = Vector2( 0, 13 )
-text = "Start"
+text = "New Game"
 
 [node name="Audio" type="Button" parent="MainMenuUI/RootUI/Panel/MenuBoxContainer/VBoxContainer/Buttons"]
 margin_top = 17.0
@@ -743,8 +742,7 @@ margin_bottom = 47.0
 rect_min_size = Vector2( 0, 13 )
 text = "Quit"
 
-[node name="AudioBoxContainer" type="MarginContainer" parent="MainMenuUI/RootUI/Panel"]
-visible = false
+[node name="AudioBoxContainer" type="ScrollContainer" parent="MainMenuUI/RootUI/Panel"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -754,21 +752,32 @@ margin_top = -64.0
 margin_right = 90.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenuUI/RootUI/Panel/AudioBoxContainer"]
-margin_right = 180.0
-margin_bottom = 64.0
+margin_right = 168.0
+margin_bottom = 89.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_constants/separation = 15
 
 [node name="AudioSetting" parent="MainMenuUI/RootUI/Panel/AudioBoxContainer/VBoxContainer" instance=ExtResource( 14 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 180.0
+margin_right = 168.0
 margin_bottom = 36.0
 
-[node name="Back" type="Button" parent="MainMenuUI/RootUI/Panel/AudioBoxContainer/VBoxContainer"]
-margin_left = 73.0
+[node name="Load" type="Button" parent="MainMenuUI/RootUI/Panel/AudioBoxContainer/VBoxContainer"]
+margin_left = 67.0
 margin_top = 51.0
-margin_right = 107.0
-margin_bottom = 64.0
+margin_right = 101.0
+margin_bottom = 61.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "load"
+
+[node name="Back" type="Button" parent="MainMenuUI/RootUI/Panel/AudioBoxContainer/VBoxContainer"]
+margin_left = 67.0
+margin_top = 76.0
+margin_right = 101.0
+margin_bottom = 89.0
 rect_min_size = Vector2( 0, 13 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -779,7 +788,8 @@ text = "Back"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = "Music"
 
-[connection signal="pressed" from="MainMenuUI/RootUI/Panel/MenuBoxContainer/VBoxContainer/Buttons/Start" to="." method="_on_play"]
+[connection signal="pressed" from="MainMenuUI/RootUI/Panel/MenuBoxContainer/VBoxContainer/Buttons/New Game" to="." method="_on_play"]
 [connection signal="pressed" from="MainMenuUI/RootUI/Panel/MenuBoxContainer/VBoxContainer/Buttons/Audio" to="." method="_on_audio_button_pressed"]
 [connection signal="pressed" from="MainMenuUI/RootUI/Panel/MenuBoxContainer/VBoxContainer/Buttons/Quit" to="." method="_on_quit"]
+[connection signal="pressed" from="MainMenuUI/RootUI/Panel/AudioBoxContainer/VBoxContainer/Load" to="." method="_on_Load_pressed"]
 [connection signal="pressed" from="MainMenuUI/RootUI/Panel/AudioBoxContainer/VBoxContainer/Back" to="." method="_on_back_button_pressed"]

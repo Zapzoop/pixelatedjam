@@ -210,10 +210,16 @@ func _on_Hurtbox_area_entered(area):
 		rage = min(10.0, rage + area.damage * 0.15)	
 
 func _on_Stats_no_health():
-	queue_free()
+	$"/root/Signalbus".body = self
+	dialogue()
 	var enemyDeathEffect = EnemyDeathEffect.instance()
 	get_parent().add_child(enemyDeathEffect)
 	enemyDeathEffect.global_position = global_position
+	#Body is queue_free in signalbus via dialogue
+
+func dialogue():
+	$"/root/Signalbus".is_end_good = true
+	Signalbus.emit_signal("display_dialog", "KingLose")
 
 func _on_Hurtbox_invincibility_started():
 	animationPlayer.play("Start")

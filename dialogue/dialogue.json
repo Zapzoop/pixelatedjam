@@ -1,5 +1,5 @@
 {
-    "ice":[
+    "Ice":[
         "Uh, what do you need? Why have you come here?",
         "I need your help. I need to go to the Earth Kingdom.",
         "Why I should tell you about it?",
@@ -8,25 +8,28 @@
         "Tell me",
         "Go down South you will see his kingdom"
     ],
-    "queen":[
+    "Queen":[
         "Thank you,I have never expected this from you! ",
         "....Why?",
         "I never considered you that strong",
         "Ah.... Let's go"
     ],
-    "king":[
+    "King":[
         "You are a fool to think you can destroy me",
         "We will see that"
     ],
-    "kingwin": [
+    "KingWin": [
         "HAHA, told you now die"
     ],
-    "kinglose": [
+    "KingLose": [
         "I don't understand why you did this",
         "Because you killed my trees and small plants....",
         "when",
         "during your very so-called “Intense Training”",
         "There were other ways by which you can handle this"
 
+    ],
+    "Save":[
+        "Do you want to save?\nYes         No"
     ]
 }

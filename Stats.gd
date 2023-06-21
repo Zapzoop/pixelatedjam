@@ -20,3 +20,8 @@ func set_health(value):
 
 func _ready():
 	self.health = max_health
+	Signalbus.connect("loading_world",self,"loading")
+	
+	
+func loading():
+	self.health = max_health

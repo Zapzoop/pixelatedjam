@@ -227,7 +227,7 @@ radius = 4.5
 
 [node name="Boss" type="KinematicBody2D"]
 scale = Vector2( 1.4, 1.4 )
-collision_layer = 16
+collision_layer = 528
 script = ExtResource( 4 )
 SHOOT_COOLDOWN = 2.5
 pkg_mine = ExtResource( 12 )
@@ -245,7 +245,7 @@ texture = ExtResource( 2 )
 material = SubResource( 14 )
 frames = SubResource( 37 )
 animation = "down"
-frame = 1
+frame = 2
 playing = true
 offset = Vector2( 0, -12 )
 
