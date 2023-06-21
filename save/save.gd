@@ -1,11 +1,11 @@
 extends StaticBody2D
 
-enum NamedEnum {SAVE, REGEN}
+enum NamedEnum {SAVE, REGEN, Null}
 export(NamedEnum) var State
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+var envo = preload("res://save/save.tres")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,16 +21,23 @@ func get_state():
 		0:
 			make_save()
 		1:
-			print("regen")
-
+			make_regen()
 func make_save():
+	$Particles2D.visible = false
+	$Sprite2.visible = false
+
+func make_regen():
 	$Particles2D.visible = true
-	$WorldEnvironment.get_environment().glow_enabled = true
+	$WorldEnvironment.set_environment(envo)
 	$Sprite2.visible = true
+	
+func disable():
+	$Particles2D.visible = false
+	$Sprite2.visible = false
+	State = NamedEnum.Null
 	
 func _input(event):
 	if event.is_action_pressed("action") and State == 1:
-		print("good")
-		if $dialoguearea.player.stats.health != 4:
-			print("how we are here")
-			$dialoguearea.player.stats.health += 1
+		if PlayerStats.health != 4:
+			PlayerStats.health += 1
+			disable()
