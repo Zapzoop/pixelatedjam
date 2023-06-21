@@ -215,11 +215,11 @@ func _on_Stats_no_health():
 	var enemyDeathEffect = EnemyDeathEffect.instance()
 	get_parent().add_child(enemyDeathEffect)
 	enemyDeathEffect.global_position = global_position
+	#Body is queue_free in signalbus via dialogue
 
 func dialogue():
 	$"/root/Signalbus".is_end_good = true
 	Signalbus.emit_signal("display_dialog", "KingLose")
-
 
 func _on_Hurtbox_invincibility_started():
 	animationPlayer.play("Start")

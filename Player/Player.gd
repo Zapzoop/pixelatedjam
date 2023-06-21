@@ -18,6 +18,7 @@ var velocity = Vector2.ZERO
 var roll_vector = Vector2.DOWN
 var stats = PlayerStats
 var current_attacking
+var last_attacking
 var is_end_bad :bool
 
 
@@ -32,6 +33,7 @@ onready var footstepEffect = $FootstepEffect
 func _ready():
 	randomize()
 	stats.connect("no_health", self, "death_handler")
+	Signalbus.connect("save",self,"upload")
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
 
@@ -95,10 +97,12 @@ func attack_animation_finished():
 	state = MOVE
 
 func death_handler():
-	if current_attacking == "Boss":
+	if current_attacking == "Boss" or last_attacking == "Boss":
 		$"/root/Signalbus".body = self
 		$"/root/Signalbus".is_end_bad = true
 		Signalbus.emit_signal("display_dialog", "KingWin")
+	queue_free()#change scene here
+	#Body is queue_free in signalbus via dialogue when died by boss
 
 func _on_Hurtbox_area_entered(area):
 	stats.health -= area.damage
@@ -115,6 +119,12 @@ func _on_Hurtbox_invincibility_ended():
 
 func _on_Interaction_body_entered(body):
 	current_attacking = body.name
-
+	last_attacking= current_attacking
+	
 func _on_Interaction_body_exited(body):
 	current_attacking = null
+	
+func upload():
+	SaveSystem.player["health"] = stats.health
+	var pos = get_global_position()
+	SaveSystem.player["position"] = {"x":pos.x,"y":pos.y}

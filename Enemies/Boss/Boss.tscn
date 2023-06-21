@@ -245,6 +245,7 @@ texture = ExtResource( 2 )
 material = SubResource( 14 )
 frames = SubResource( 37 )
 animation = "down"
+frame = 2
 playing = true
 offset = Vector2( 0, -12 )
 
@@ -267,7 +268,7 @@ position = Vector2( 0, -11.4286 )
 shape = SubResource( 50 )
 
 [node name="Stats" parent="." instance=ExtResource( 5 )]
-max_health = 1
+max_health = 60
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 6 )]
 visible = false

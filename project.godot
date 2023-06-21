@@ -33,9 +33,9 @@ config/icon="res://icon.png"
 
 [autoload]
 
+Signalbus="*res://dialogue/signalbus.gd"
 SaveSystem="*res://save/save_system.gd"
 PlayerStats="*res://Player/PlayerStats.tscn"
-Signalbus="*res://dialogue/signalbus.gd"
 
 [display]
 

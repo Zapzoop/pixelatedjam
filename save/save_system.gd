@@ -4,18 +4,20 @@ extends Node2D
 const save_file = "user://save.json"
 
 var player = {
-	"health": 30,
+	"health": 0,
 	"position": {
-		"x": 69,
-		"y": 420
+		"x": 0,
+		"y": 0
 	},
 	"interacted": [
 		
 	]
 }
-
+func _ready():
+	Signalbus.connect("loading_world",self,"on_loading")
 
 func save_file():
+	print(player)
 	var file = File.new()
 	file.open(save_file, File.WRITE)
 	file.store_string(to_json(player))
@@ -33,3 +35,6 @@ func load_file():
 			printerr("Corrupted data!")
 	else:
 		printerr("No saved data!")
+
+func on_loading():
+	player["interacted"] = []

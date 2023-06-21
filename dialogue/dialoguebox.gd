@@ -11,6 +11,8 @@ var in_progress = false
 var current_character = null
 var next_text
 var count = 0
+var is_save_mode:bool = false
+
 
 var current_dialogue_character
 
@@ -24,6 +26,7 @@ func _ready(): #Making the dialogue system invisible at first
 	$Ice.visible = false
 	$Air.visible = false
 	$Player.visible = false
+	$Sprite.visible = false
 	scene_text = load_scene_text()
 	Signalbus.connect("display_dialog", self, "on_display_dialog")
 
@@ -79,10 +82,13 @@ func finish():#finishes the dialogue scene
 	$Ice.visible = false
 	$Air.visible = false
 	$Player.visible = false
+	$Sprite.visible = false
 	$Player.stop()
+	$Sprite.stop()
 	$Boss.stop()
 	$Ice.stop()
 	$Air.stop()
+	is_save_mode = false
 	background.visible = false
 	in_progress = false
 	get_tree().paused = false
@@ -95,6 +101,8 @@ func on_display_dialog(text_key):  #When in display pause other things
 	set_character()
 	if in_progress:
 		next_line()
+	elif current_dialogue_character == $Sprite:
+		savehandler()
 	elif not text_key in $"/root/SaveSystem".player["interacted"]:
 		get_tree().paused = true
 		background.visible = true
@@ -116,3 +124,47 @@ func set_character():
 			current_dialogue_character = $Air
 		"Ice":
 			current_dialogue_character = $Ice
+		"Save":
+			current_dialogue_character = $Sprite
+
+func savehandler():
+	is_save_mode =true
+	get_tree().paused = true
+	in_progress = true
+	background.visible = true
+	text_label.visible = true
+	selected_text = scene_text[current_character].duplicate()
+	show_text()
+
+func _input(event):
+	if (event.is_action("ui_accept")) and is_save_mode== true:
+		if $MarginContainer/Panel/MarginContainer/yes.visible == true:
+			save()
+			finish()
+		elif $MarginContainer/Panel/MarginContainer/no.visible == true:
+			finish()
+	elif (event.is_action_pressed("ui_left")) and $MarginContainer/Panel/MarginContainer/yes.visible == true:
+		$MarginContainer/Panel/MarginContainer/yes.visible = false
+		$MarginContainer/Panel/MarginContainer/no.visible = true
+		$MarginContainer/Panel/MarginContainer/no.play("default")
+	elif event.is_action_pressed("ui_left") and $MarginContainer/Panel/MarginContainer/no.visible == true:
+		$MarginContainer/Panel/MarginContainer/no.visible = false
+		$MarginContainer/Panel/MarginContainer/yes.visible = true
+		$MarginContainer/Panel/MarginContainer/yes.play("default")
+	elif event.is_action_pressed("ui_right") and $MarginContainer/Panel/MarginContainer/yes.visible == true:
+		$MarginContainer/Panel/MarginContainer/yes.visible = false
+		$MarginContainer/Panel/MarginContainer/no.visible = true
+		$MarginContainer/Panel/MarginContainer/no.play("default")
+	elif event.is_action_pressed("ui_right") and $MarginContainer/Panel/MarginContainer/no.visible == true:
+		$MarginContainer/Panel/MarginContainer/no.visible = false
+		$MarginContainer/Panel/MarginContainer/yes.visible = true
+		$MarginContainer/Panel/MarginContainer/yes.play("default")
+
+func save():
+	Signalbus.emit_signal("save")
+	SaveSystem.save_file()
+
+func _on_Tween_tween_completed(object, key):
+	if current_dialogue_character == $Sprite:
+		$MarginContainer/Panel/MarginContainer/yes.visible = true
+		$MarginContainer/Panel/MarginContainer/yes.play("default")
