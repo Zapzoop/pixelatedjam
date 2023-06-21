@@ -28,3 +28,13 @@ func _go_to_main_scene():
 func toggle_audio_option(value: bool) -> void:
 	audio_box.visible = value
 	menu_box.visible = not value
+
+
+func _on_Load_pressed():
+	$"/root/SaveSystem".load_file()
+	fader.fade_screen(true, "_go_to_load_scene", self)
+	
+func _go_to_load_scene():
+	get_tree().change_scene(main_scene_path)
+	Signalbus.emit_signal("load_scene")
+

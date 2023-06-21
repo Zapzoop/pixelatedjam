@@ -34,6 +34,7 @@ func _ready():
 	randomize()
 	stats.connect("no_health", self, "death_handler")
 	Signalbus.connect("save",self,"upload")
+	Signalbus.connect("realload",self,"set_load")
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
 
@@ -128,3 +129,9 @@ func upload():
 	SaveSystem.player["health"] = stats.health
 	var pos = get_global_position()
 	SaveSystem.player["position"] = {"x":pos.x,"y":pos.y}
+
+func set_load():
+	stats.health = SaveSystem.player["health"]
+	var loadpos = SaveSystem.player["position"]
+	var pos = Vector2(loadpos["x"],loadpos["y"])
+	set_global_position(pos)
