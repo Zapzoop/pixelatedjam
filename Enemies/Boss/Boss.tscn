@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://Enemies/Boss/pxl_boss_placeholder_alt2.png" type="Texture" id=1]
 [ext_resource path="res://Shadows/SmallShadow.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Enemies/Boss/BossSpawnEffect.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Enemies/Boss/BossAOEAttack.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Enemies/Boss/BossTrackingProjectile.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Enemies/Boss/BossHealthbar.tscn" type="PackedScene" id=17]
 
 [sub_resource type="ShaderMaterial" id=14]
 resource_local_to_scene = true
@@ -184,8 +185,9 @@ height = 17.29
 [sub_resource type="CircleShape2D" id=33]
 radius = 150.0
 
-[sub_resource type="CircleShape2D" id=34]
-radius = 5.12
+[sub_resource type="CapsuleShape2D" id=72]
+radius = 5.45
+height = 7.2
 
 [sub_resource type="Animation" id=12]
 resource_name = "Start"
@@ -221,7 +223,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=62]
-radius = 4.0
+radius = 4.5
 
 [node name="Boss" type="KinematicBody2D"]
 scale = Vector2( 1.4, 1.4 )
@@ -243,7 +245,7 @@ texture = ExtResource( 2 )
 material = SubResource( 14 )
 frames = SubResource( 37 )
 animation = "down"
-frame = 3
+frame = 1
 playing = true
 offset = Vector2( 0, -12 )
 
@@ -266,7 +268,7 @@ position = Vector2( 0, -11.4286 )
 shape = SubResource( 50 )
 
 [node name="Stats" parent="." instance=ExtResource( 5 )]
-max_health = 30
+max_health = 60
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 6 )]
 visible = false
@@ -277,10 +279,10 @@ shape = SubResource( 33 )
 
 [node name="SoftCollision" parent="." instance=ExtResource( 8 )]
 visible = false
-position = Vector2( 0, -8 )
+position = Vector2( 0, -4.28571 )
 
 [node name="CollisionShape2D" parent="SoftCollision" index="0"]
-shape = SubResource( 34 )
+shape = SubResource( 72 )
 
 [node name="WanderController" parent="." instance=ExtResource( 9 )]
 
@@ -290,15 +292,29 @@ anims/Stop = SubResource( 13 )
 
 [node name="projectile_spawn_point" type="Position2D" parent="."]
 position = Vector2( 0, -20 )
-scale = Vector2( 1, 1 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 7 )]
 position = Vector2( 0, 5.71429 )
 collision_mask = 4
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
-position = Vector2( 0, -14 )
+position = Vector2( 0, -13.5714 )
 shape = SubResource( 62 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BossHealthBar" parent="CanvasLayer" instance=ExtResource( 17 )]
+unique_name_in_owner = true
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -100.0
+margin_top = -15.0
+margin_right = 100.0
+margin_bottom = -5.0
+path_stats = NodePath("../../Stats")
 
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_animation_frame_changed"]
