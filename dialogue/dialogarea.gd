@@ -3,6 +3,7 @@ extends Area2D
 export var text_key = "" #set the key here
 var area_active = false
 
+var player
 var display_label
 
 func _input(event):
@@ -13,6 +14,7 @@ func _input(event):
 
 func _on_dialoguearea_area_entered(area):
 	display_label = area.get_child(1)
+	player = area.get_parent()
 	if not text_key in $"/root/SaveSystem".player["interacted"]:
 		display_label.visible = true
 		area_active = true
