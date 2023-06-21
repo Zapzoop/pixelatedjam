@@ -13638,7 +13638,7 @@ position = Vector2( 80, 64 )
 
 [node name="dialoguearea" parent="Ice" instance=ExtResource( 13 )]
 position = Vector2( 1, -2 )
-text_key = "ice"
+text_key = "Ice"
 
 [node name="CollisionShape2D" parent="Ice/dialoguearea" index="0"]
 position = Vector2( 7, 10 )
@@ -13648,7 +13648,7 @@ shape = SubResource( 51 )
 position = Vector2( 144, 24 )
 
 [node name="dialoguearea" parent="Air" instance=ExtResource( 13 )]
-text_key = "queen"
+text_key = "Queen"
 
 [node name="CollisionShape2D" parent="Air/dialoguearea" index="0"]
 position = Vector2( 8, 8 )
@@ -13658,7 +13658,7 @@ shape = SubResource( 52 )
 position = Vector2( 208, 56 )
 
 [node name="dialoguearea" parent="Earth" instance=ExtResource( 13 )]
-text_key = "king"
+text_key = "King"
 
 [node name="CollisionShape2D" parent="Earth/dialoguearea" index="0"]
 position = Vector2( 15, 7 )

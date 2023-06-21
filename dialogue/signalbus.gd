@@ -1,3 +1,24 @@
 extends Node
 
+var is_end_bad:bool
+var is_end_good: bool
+var body
+
 signal display_dialog(text_key)
+signal loading_world
+signal free
+
+func _input(event):
+	if event.is_action_pressed("action") and is_end_bad == true:
+		self.emit_signal("display_dialog", "KingWin")
+	if event.is_action_pressed("action") and is_end_good == true:
+		self.emit_signal("display_dialog", "KingLose")
+
+func _ready():
+	self.set_pause_mode(2) # Set pause mode to Process
+	set_process(true)
+	self.connect("free",self,"on_free")
+	
+func on_free():
+	body.queue_free()
+

@@ -17,6 +17,9 @@ var state = MOVE
 var velocity = Vector2.ZERO
 var roll_vector = Vector2.DOWN
 var stats = PlayerStats
+var current_attacking
+var is_end_bad :bool
+
 
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
@@ -28,7 +31,7 @@ onready var footstepEffect = $FootstepEffect
 
 func _ready():
 	randomize()
-	stats.connect("no_health", self, "queue_free")
+	stats.connect("no_health", self, "death_handler")
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
 
@@ -42,7 +45,7 @@ func _physics_process(delta):
 		
 		ATTACK:
 			attack_state()
-	
+
 func move_state(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -91,6 +94,12 @@ func roll_animation_finished():
 func attack_animation_finished():
 	state = MOVE
 
+func death_handler():
+	if current_attacking == "Boss":
+		$"/root/Signalbus".body = self
+		$"/root/Signalbus".is_end_bad = true
+		Signalbus.emit_signal("display_dialog", "KingWin")
+
 func _on_Hurtbox_area_entered(area):
 	stats.health -= area.damage
 	hurtbox.start_invincibility(0.6)
@@ -104,3 +113,8 @@ func _on_Hurtbox_invincibility_started():
 func _on_Hurtbox_invincibility_ended():
 	blinkAnimationPlayer.play("Stop")
 
+func _on_Interaction_body_entered(body):
+	current_attacking = body.name
+
+func _on_Interaction_body_exited(body):
+	current_attacking = null

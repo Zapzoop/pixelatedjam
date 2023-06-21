@@ -43,7 +43,7 @@ func show_text(): #Show text according to character
 	alternate_sprites(count)
 
 func alternate_sprites(count):
-	if current_character != "kinglose":
+	if current_character != "KingLose":
 		if count %2 == 0:
 			current_dialogue_character.visible = false
 			current_dialogue_character.play("default")
@@ -54,7 +54,7 @@ func alternate_sprites(count):
 			current_dialogue_character.play("default")
 			$Player.visible = false
 			$Player.stop()
-	if current_character == "kinglose":
+	if current_character == "KingLose":
 		if count %2 != 0:
 			current_dialogue_character.visible = false
 			current_dialogue_character.play("default")
@@ -87,6 +87,7 @@ func finish():#finishes the dialogue scene
 	in_progress = false
 	get_tree().paused = false
 	current_dialogue_character = null
+	$"/root/Signalbus".emit_signal("free")
 	
 	
 func on_display_dialog(text_key):  #When in display pause other things
@@ -105,13 +106,13 @@ func on_display_dialog(text_key):  #When in display pause other things
 
 func set_character():
 	match current_character:
-		"king":
+		"King":
 			current_dialogue_character = $Boss
-		"kingwin":
+		"KingWin":
 			current_dialogue_character = $Boss
-		"kinglose":
+		"KingLose":
 			current_dialogue_character = $Boss
-		"queen":
+		"Queen":
 			current_dialogue_character = $Air
-		"ice":
+		"Ice":
 			current_dialogue_character = $Ice
