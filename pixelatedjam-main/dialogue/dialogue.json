@@ -1,0 +1,35 @@
+{
+    "Ice":[
+        "Uh, what do you need? Why have you come here?",
+        "I need your help. I need to go to the Earth Kingdom.",
+        "Why I should tell you about it?",
+        "You have to you have no other choice",
+        "I see, ok then, my lord.",
+        "Help me",
+        "I will open a portal and teleport you there..."
+    ],
+    "Queen":[
+        "Thank you,I have never expected this from you! ",
+        "....Why?",
+        "I never considered you that strong",
+        "Ah.... Let's go"
+    ],
+    "King":[
+        "You are a fool to think you can destroy me",
+        "We will see that"
+    ],
+    "KingWin": [
+        "HAHA, told you now die"
+    ],
+    "KingLose": [
+        "I don't understand why you did this",
+        "Because you killed my trees and small plants....",
+        "when",
+        "during your very so-called “Intense Training”",
+        "There were other ways by which you can handle this"
+
+    ],
+    "Save":[
+        "Do you want to save?\nYes         No"
+    ]
+}

@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Camera2D.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/Boss/Boss.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/HealthUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemies/Owl/Owl.tscn" type="PackedScene" id=5]
+
+[node name="Testing" type="Node2D"]
+
+[node name="Camera2D" parent="." instance=ExtResource( 1 )]
+current = false
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Player" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 127, 97 )
+
+[node name="Boss" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 248, 72 )
+SHOW_HEALTHBAR = true
+
+[node name="Owl" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 80, 136 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthUI" parent="CanvasLayer" instance=ExtResource( 4 )]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 68.0
+margin_bottom = 19.0

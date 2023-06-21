@@ -1,0 +1,79 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://UI/pause/pause.gd" type="Script" id=1]
+[ext_resource path="res://UI/Settings/audio_setting.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/main_menu/main_menu_theme.tres" type="Theme" id=3]
+
+[node name="PauseUI" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+script = ExtResource( 1 )
+main_menu_path = "res://UI/main_menu/MainMenu.tscn"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.027451, 0.00784314, 0.0588235, 0.305882 )
+
+[node name="PauseOptionCotainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -32.0
+margin_top = -90.0
+margin_right = 32.0
+margin_bottom = -22.0
+
+[node name="Resume" type="Button" parent="PauseOptionCotainer"]
+margin_right = 64.0
+margin_bottom = 20.0
+size_flags_vertical = 3
+text = "Resume"
+
+[node name="Audio" type="Button" parent="PauseOptionCotainer"]
+margin_top = 24.0
+margin_right = 64.0
+margin_bottom = 44.0
+size_flags_vertical = 3
+text = "Audio"
+
+[node name="Back" type="Button" parent="PauseOptionCotainer"]
+margin_top = 48.0
+margin_right = 64.0
+margin_bottom = 68.0
+size_flags_vertical = 3
+text = "Back"
+
+[node name="AudioSettingContainer" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -106.0
+margin_top = -60.0
+margin_right = 101.0
+margin_bottom = 43.0
+
+[node name="AudioSetting" parent="AudioSettingContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 207.0
+margin_bottom = 89.0
+size_flags_vertical = 3
+
+[node name="audio_back" type="Button" parent="AudioSettingContainer"]
+margin_left = 86.0
+margin_top = 93.0
+margin_right = 126.0
+margin_bottom = 108.0
+size_flags_horizontal = 4
+text = "Back"
+
+[connection signal="pressed" from="PauseOptionCotainer/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="PauseOptionCotainer/Audio" to="." method="_on_Audio_pressed"]
+[connection signal="pressed" from="PauseOptionCotainer/Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="AudioSettingContainer/audio_back" to="." method="_on_audio_back_pressed"]
