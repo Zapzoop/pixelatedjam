@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://dialogue/dialoguearea.tscn" type="PackedScene" id=13]
 [ext_resource path="res://dialogue/dialoguebox.tscn" type="PackedScene" id=14]
 [ext_resource path="res://forget_me_not_in_f_major.mp3" type="AudioStream" id=15]
+[ext_resource path="res://Evil Approach.mp3" type="AudioStream" id=16]
 [ext_resource path="res://Enemies/Owl/Owl.tscn" type="PackedScene" id=17]
 [ext_resource path="res://save/save.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Enemies/Boss/Boss.tscn" type="PackedScene" id=19]
@@ -410,7 +411,7 @@ __meta__ = {
 }
 
 [node name="Camera2D" parent="." instance=ExtResource( 10 )]
-position = Vector2( -2432, -144 )
+position = Vector2( -2416, -192 )
 zoom = Vector2( 1.75, 1.75 )
 process_mode = 0
 
@@ -423,7 +424,7 @@ position = Vector2( 8383, 4753 )
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( -2432, -144 )
+position = Vector2( -2416, -192 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
 remote_path = NodePath("../../../Camera2D")
@@ -15431,6 +15432,10 @@ shape = SubResource( 51 )
 stream = ExtResource( 15 )
 volume_db = -5.0
 autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+volume_db = -5.0
 
 [editable path="Camera2D"]
 [editable path="Ice/dialoguearea"]

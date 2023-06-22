@@ -43,6 +43,10 @@ func _on_dialoguearea_area_exited(area):
 func onfinish(text):
 	if text_key == "Ice" and player != null:
 		player.set_global_position(Vector2(168,80))
+	if text == "King":
+		Signalbus.world.get_node("AudioStreamPlayer").stop()
+		Signalbus.world.get_node("AudioStreamPlayer2").play()
+		Signalbus.world.get_node("AudioStreamPlayer2").set_autoplay(true)
 	if text == "KingLose":
 		load_air()
 	elif text == "Queen":
