@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://dialogue/dialoguebox.gd" type="Script" id=1]
 [ext_resource path="res://UI/Font/PublicPixel-z84yD.ttf" type="DynamicFontData" id=2]
@@ -104,18 +104,6 @@ region = Rect2( 0, 0, 256, 256 )
 [sub_resource type="SpriteFrames" id=15]
 animations = [ {
 "frames": [ SubResource( 27 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[sub_resource type="AtlasTexture" id=28]
-atlas = ExtResource( 7 )
-region = Rect2( 0, 0, 256, 256 )
-
-[sub_resource type="SpriteFrames" id=16]
-animations = [ {
-"frames": [ SubResource( 28 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -230,7 +218,6 @@ frames = SubResource( 15 )
 [node name="Air" type="AnimatedSprite" parent="."]
 position = Vector2( 16, 160 )
 scale = Vector2( 0.1, 0.1 )
-frames = SubResource( 16 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( 280, 152 )

@@ -11,12 +11,16 @@ signal free
 signal save
 signal load_scene
 signal realload
-signal finished
+signal finished(text)
 signal bossencounter
 signal myid(id)
 signal clearid
 
+var queen
+var world
+var player
 var count = 0
+var label
 
 func _input(event):
 	if event.is_action_pressed("action") and is_end_bad == true:
@@ -28,6 +32,9 @@ func _input(event):
 		count += 1
 		if count == 2:
 			boss_enabled = false
+	elif event.is_action_pressed("action") and queen == true:
+		label.visible = false
+		self.emit_signal("display_dialog", "Queen")
 
 func _ready():
 	self.set_pause_mode(2) # Set pause mode to Process
@@ -40,8 +47,10 @@ func on_free():#Freeing Boss and Player here for dialogue system
 	if body != null:
 		if body.name == "Player":
 			get_tree().change_scene("res://Dead.tscn")
+			body = null
 		elif body.name == "Boss":
 			body.queue_free()
+			body = null
 
 func loadit():
 	yield(get_tree().create_timer(.1), "timeout")

@@ -12,10 +12,12 @@ var dialogues = {
 		"I will open a portal and teleport you there..."
 	],
 	"Queen":[
-		"Thank you,I have never expected this from you! ",
-		"....Why?",
-		"I never considered you that strong",
-		"Ah.... Let's go"
+		"Thank you....",
+		"....Who is this?",
+		"I am Queen Air",
+		"Where are you?",
+		"I am Free because of you..Thank you ",
+		"You're Welcome"
 	],
 	"King":[
 		"You are a fool to think you can destroy me",
@@ -140,10 +142,11 @@ func finish():#finishes the dialogue scene
 	get_tree().paused = false
 	current_dialogue_character = null
 	$"/root/Signalbus".emit_signal("free")
-	Signalbus.emit_signal("finished")
+	Signalbus.emit_signal("finished", current_character)
 
 
-func on_display_dialog(text_key):  #When in display pause other things
+func on_display_dialog(text_key):
+	print(text_key)  #When in display pause other things
 	current_character = text_key
 	set_character()
 	if in_progress:

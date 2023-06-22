@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -15,7 +15,6 @@
 [ext_resource path="res://dialogue/dialoguearea.tscn" type="PackedScene" id=13]
 [ext_resource path="res://dialogue/dialoguebox.tscn" type="PackedScene" id=14]
 [ext_resource path="res://forget_me_not_in_f_major.mp3" type="AudioStream" id=15]
-[ext_resource path="res://Allies/Air/Air.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Enemies/Owl/Owl.tscn" type="PackedScene" id=17]
 [ext_resource path="res://save/save.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Enemies/Boss/Boss.tscn" type="PackedScene" id=19]
@@ -23,6 +22,7 @@
 [ext_resource path="res://World/street-sign-post.png" type="Texture" id=21]
 [ext_resource path="res://World/main-tree.png" type="Texture" id=22]
 [ext_resource path="res://World/666737__chris5s__blustery-winter-evening.mp3" type="AudioStream" id=23]
+[ext_resource path="res://World.gd" type="Script" id=24]
 
 [sub_resource type="TileSet" id=1]
 0/name = "DirtTileset.png 0"
@@ -371,9 +371,8 @@ extents = Vector2( 40.3333, 153 )
 
 [sub_resource type="RectangleShape2D" id=51]
 
-[sub_resource type="RectangleShape2D" id=52]
-
 [node name="World" type="Node2D"]
+script = ExtResource( 24 )
 
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 358, -193 )
@@ -411,7 +410,7 @@ __meta__ = {
 }
 
 [node name="Camera2D" parent="." instance=ExtResource( 10 )]
-position = Vector2( -4760, 848 )
+position = Vector2( -2432, -144 )
 zoom = Vector2( 1.75, 1.75 )
 process_mode = 0
 
@@ -424,7 +423,7 @@ position = Vector2( 8383, 4753 )
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( -4760, 848 )
+position = Vector2( -2432, -144 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
 remote_path = NodePath("../../../Camera2D")
@@ -15418,7 +15417,7 @@ scene_text_file = "res://dialogue/dialogue.json"
 visible = false
 
 [node name="Ice" parent="." groups=["ice"] instance=ExtResource( 11 )]
-position = Vector2( -1520, -248 )
+position = Vector2( -1512, -224 )
 
 [node name="dialoguearea" parent="Ice" instance=ExtResource( 13 )]
 position = Vector2( 1, -2 )
@@ -15428,16 +15427,6 @@ text_key = "Ice"
 position = Vector2( 7, 10 )
 shape = SubResource( 51 )
 
-[node name="Air" parent="." groups=["air"] instance=ExtResource( 16 )]
-position = Vector2( 144, 24 )
-
-[node name="dialoguearea" parent="Air" instance=ExtResource( 13 )]
-text_key = "Queen"
-
-[node name="CollisionShape2D" parent="Air/dialoguearea" index="0"]
-position = Vector2( 8, 8 )
-shape = SubResource( 52 )
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
 volume_db = -5.0
@@ -15445,4 +15434,3 @@ autoplay = true
 
 [editable path="Camera2D"]
 [editable path="Ice/dialoguearea"]
-[editable path="Air/dialoguearea"]

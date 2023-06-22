@@ -29,6 +29,7 @@ onready var swordHitbox = $HitboxPivot/SwordHitbox
 onready var hurtbox = $Hurtbox
 onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 onready var footstepEffect = $FootstepEffect
+onready var label = $Interaction/Label
 
 func _ready():
 	randomize()
@@ -37,6 +38,7 @@ func _ready():
 	Signalbus.connect("realload",self,"set_load")
 	Signalbus.connect("myid",self,"idhandler")
 	Signalbus.connect("clearid",self,"idclear")
+	Signalbus.player = self
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
 
