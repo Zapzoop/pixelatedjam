@@ -20,7 +20,7 @@ var stats = PlayerStats
 var current_attacking
 var last_attacking
 var is_end_bad :bool
-
+var regen_booth
 
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
@@ -29,12 +29,16 @@ onready var swordHitbox = $HitboxPivot/SwordHitbox
 onready var hurtbox = $Hurtbox
 onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 onready var footstepEffect = $FootstepEffect
+onready var label = $Interaction/Label
 
 func _ready():
 	randomize()
 	stats.connect("no_health", self, "death_handler")
 	Signalbus.connect("save",self,"upload")
 	Signalbus.connect("realload",self,"set_load")
+	Signalbus.connect("myid",self,"idhandler")
+	Signalbus.connect("clearid",self,"idclear")
+	Signalbus.player = self
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
 
@@ -136,3 +140,10 @@ func set_load():
 	var loadpos = SaveSystem.player["position"]
 	var pos = Vector2(loadpos["x"],loadpos["y"])
 	set_global_position(pos)
+
+
+func idhandler(id):
+	regen_booth = id
+	
+func idclear():
+	regen_booth = null

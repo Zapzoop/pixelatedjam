@@ -4,29 +4,12 @@
 [ext_resource path="res://dialogue/dialoguearea.tscn" type="PackedScene" id=2]
 [ext_resource path="res://save/save.gd" type="Script" id=3]
 [ext_resource path="res://save/spotlight_7.png" type="Texture" id=4]
+[ext_resource path="res://save/save.tres" type="Environment" id=5]
+[ext_resource path="res://save/yellow.tres" type="Material" id=6]
+[ext_resource path="res://save/green.tres" type="Material" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32.25, 24 )
-
-[sub_resource type="Curve" id=2]
-max_value = 100.0
-_data = [ Vector2( 0, 19.324 ), 0.0, 0.0, 0, 0, Vector2( 0.994382, 74.7785 ), 449.495, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=3]
-curve = SubResource( 2 )
-
-[sub_resource type="ParticlesMaterial" id=4]
-emission_shape = 2
-emission_box_extents = Vector3( 20, 1, 1 )
-flag_disable_z = true
-direction = Vector3( 0, 100, 0 )
-gravity = Vector3( 0, -100, 0 )
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-damping_curve = SubResource( 3 )
-color = Color( 0.5, 5, 0.5, 1 )
-hue_variation = 0.18
-hue_variation_random = 0.45
 
 [sub_resource type="CanvasItemMaterial" id=6]
 blend_mode = 1
@@ -50,11 +33,19 @@ position = Vector2( 0.25, 0 )
 shape = SubResource( 1 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
+visible = false
 position = Vector2( 0, 8 )
 amount = 50
-process_material = SubResource( 4 )
+process_material = ExtResource( 7 )
+
+[node name="Particles2D2" type="Particles2D" parent="."]
+visible = false
+position = Vector2( 0, 8 )
+amount = 50
+process_material = ExtResource( 6 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 5 )
 
 [node name="Sprite2" type="Sprite" parent="."]
 modulate = Color( 0.5, 1, 2, 1 )
@@ -62,5 +53,8 @@ material = SubResource( 6 )
 position = Vector2( -9.53674e-07, -24 )
 scale = Vector2( 1, 0.296875 )
 texture = ExtResource( 4 )
+
+[connection signal="area_entered" from="dialoguearea" to="." method="_on_dialoguearea_area_entered_save"]
+[connection signal="area_exited" from="dialoguearea" to="." method="_on_dialoguearea_area_exited_save"]
 
 [editable path="dialoguearea"]
