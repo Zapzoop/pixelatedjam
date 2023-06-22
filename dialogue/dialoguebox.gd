@@ -50,7 +50,6 @@ var next_text
 var count = 0
 var is_save_mode:bool = false
 
-
 var current_dialogue_character
 
 onready var background = $MarginContainer
@@ -67,6 +66,7 @@ func _ready(): #Making the dialogue system invisible at first
 	$Sprite.visible = false
 	scene_text = load_scene_text()
 	Signalbus.connect("display_dialog", self, "on_display_dialog")
+
 
 func save_file():
 	var file = File.new()
@@ -85,6 +85,8 @@ func show_text(): #Show text according to character
 	count += 1
 	text_label.text = next_text
 	text_label.percent_visible = 0.0
+	print(next_text)
+	#print(selected_text, "here")
 	$Tween.interpolate_property(text_label, "percent_visible", 0.0, 1.0, len(next_text) * CHAR_READ_RATE, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.start()
 	alternate_sprites(count)
@@ -139,8 +141,8 @@ func finish():#finishes the dialogue scene
 	current_dialogue_character = null
 	$"/root/Signalbus".emit_signal("free")
 	Signalbus.emit_signal("finished")
-	
-	
+
+
 func on_display_dialog(text_key):  #When in display pause other things
 	current_character = text_key
 	set_character()

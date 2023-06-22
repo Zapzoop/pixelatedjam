@@ -6,6 +6,8 @@ var area_active = false
 var player
 var display_label
 
+var air = preload("res://Allies/Air/Air.tscn")
+
 func _ready():
 	Signalbus.connect("finished",self,"onfinish")
 
@@ -39,3 +41,10 @@ func _on_dialoguearea_area_exited(area):
 func onfinish():
 	if text_key == "Ice" and player != null:
 		player.set_global_position(Vector2(168,80))
+	if text_key == "KingLose":
+		load_air()
+
+func load_air():
+	var instance = air.instance()
+	
+	instance.set_global_position()

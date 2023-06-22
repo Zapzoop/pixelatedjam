@@ -62,6 +62,8 @@ onready var spawn_parent = get_parent()
 
 onready var healthbar = get_node("%BossHealthBar")
 
+var first_time = true
+
 func _ready():
 	state = pick_random_state([IDLE, WANDER])
 
@@ -219,7 +221,10 @@ func _on_Stats_no_health():
 	
 func dialogue():
 	$"/root/Signalbus".is_end_good = true
-	Signalbus.emit_signal("display_dialog", "KingLose")
+	if first_time == true:
+		print("sended")
+		Signalbus.emit_signal("display_dialog", "KingLose")
+		first_time = false
 
 func _on_Hurtbox_invincibility_started():
 	animationPlayer.play("Start")

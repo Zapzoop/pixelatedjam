@@ -411,7 +411,7 @@ __meta__ = {
 }
 
 [node name="Camera2D" parent="." instance=ExtResource( 10 )]
-position = Vector2( -2469.84, -200 )
+position = Vector2( -4760, 848 )
 zoom = Vector2( 1.75, 1.75 )
 process_mode = 0
 
@@ -424,7 +424,7 @@ position = Vector2( 8383, 4753 )
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( -2469.84, -200 )
+position = Vector2( -4760, 848 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
 remote_path = NodePath("../../../Camera2D")
@@ -1638,18 +1638,12 @@ position = Vector2( -4688, -312 )
 position = Vector2( 507, -143 )
 
 [node name="Sprite5" parent="YSort/Bushes" instance=ExtResource( 18 )]
-position = Vector2( -5836, -3219 )
+position = Vector2( -5624, -3096 )
+State = 1
 
 [node name="Sprite6" parent="YSort/Bushes" instance=ExtResource( 18 )]
 position = Vector2( 464, 1665 )
 State = 1
-
-[node name="Sprite8" parent="YSort/Bushes" instance=ExtResource( 18 )]
-position = Vector2( 536, 1768 )
-State = 1
-
-[node name="Sprite9" parent="YSort/Bushes" instance=ExtResource( 18 )]
-position = Vector2( 288, 1792 )
 
 [node name="Sprite7" parent="YSort/Bushes" instance=ExtResource( 18 )]
 position = Vector2( -4688, -599 )
@@ -1660,8 +1654,16 @@ position = Vector2( 6096, -978 )
 [node name="Sprite3" parent="YSort/Bushes" instance=ExtResource( 18 )]
 position = Vector2( 3004, 3235 )
 
+[node name="Sprite8" parent="YSort/Bushes" instance=ExtResource( 18 )]
+position = Vector2( 3896, 4088 )
+State = 1
+
 [node name="Sprite4" parent="YSort/Bushes" instance=ExtResource( 18 )]
 position = Vector2( -3769, -1928 )
+
+[node name="Sprite9" parent="YSort/Bushes" instance=ExtResource( 18 )]
+position = Vector2( -4232, -1920 )
+State = 1
 
 [node name="Grass" type="YSort" parent="YSort"]
 
